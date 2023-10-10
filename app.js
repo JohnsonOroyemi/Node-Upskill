@@ -19,13 +19,28 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));*/
 var app = express();
 // Import the mongoose module
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const mongoDB = "mongodb+srv://oroyemijohnson:ADENIYI1392@cluster0.trr34k2.mongodb.net/local_library?retryWrites=true&w=majority";
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
+}*/
+
+
+// Set up mongoose connection
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+
+const dev_db_url =
+  "mongodb+srv://oroyemijohnson:ADENIYI1392@cluster0.trr34k2.mongodb.net/local_library?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
 }
+
 
 
 // view engine setup
