@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config(); // Load environment variables from .env file
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -11,29 +12,12 @@ var compression = require('compression');
 var helmet = require('helmet');
 
 
-//Set up mongoose connection
-/*var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://oroyemijohnson:ADENIYI1392@cluster0.trr34k2.mongodb.net/local_library?retryWrites=true&w=majority';
-mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));*/
 var app = express();
-// Import the mongoose module
-/*const mongoose = require("mongoose");
-mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://oroyemijohnson:ADENIYI1392@cluster0.trr34k2.mongodb.net/local_library?retryWrites=true&w=majority";
-main().catch((err) => console.log(err));
-async function main() {
-  await mongoose.connect(mongoDB);
-}*/
-
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
-const dev_db_url =
-  "mongodb+srv://oroyemijohnson:ADENIYI1392@cluster0.trr34k2.mongodb.net/local_library?retryWrites=true&w=majority";
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
