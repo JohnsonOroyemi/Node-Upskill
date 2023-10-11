@@ -1,4 +1,3 @@
-require('dotenv').config(); // Load environment variables from .env file
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -13,6 +12,8 @@ var helmet = require('helmet');
 
 
 var app = express();
+
+const dotenv = require('dotenv').config(); // Load environment variables from .env file
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
