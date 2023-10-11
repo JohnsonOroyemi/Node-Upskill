@@ -1,9 +1,9 @@
+require('dotenv').config(); // Load environment variables from .env file
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-require('dotenv').config(); // Load environment variables from .env file
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,7 +18,7 @@ var app = express();
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
-const mongoDB = process.env.MONGODB_URI || dev_db_url;
+const mongoDB = process.env.MONGODB_URI || process.env.dev_db_url;
 
 main().catch((err) => console.log(err));
 async function main() {
